@@ -1,0 +1,51 @@
+extends ARMain
+
+var astronaut
+var planet
+
+var gotcha: bool = false
+var rng = RandomNumberGenerator.new()
+var time: float = 0.0
+
+var width:float = 1820.0
+var height:float = 840.0
+
+
+func start() -> void:
+	api("connect_to_swp_app", {
+		"target_node": self,
+		"on_message": "on_message",
+		"on_error": "on_error",
+		"on_connected": "on_connected",
+		"on_disconnected": "on_disconnected",
+	})
+	
+	rng.randomize()
+	var my_random_number = rng.randf_range(-10.0, 10.0)
+	astronaut = get_ar_element("Astronaut")
+	planet = get_ar_element("Planet")
+	planet.setup(width / 2, height / 2, 200.0, 1.0, 1.0)
+	astronaut.setup(800.0, 300.0, 10.0)
+
+func update_process(delta: float) -> void:
+	pass
+
+
+func reset_hit() -> void:
+	gotcha = false
+
+
+func on_message(message):
+	pass
+
+
+func on_connected():
+	api("out", "HUD connected to SWP!")
+
+
+func on_disconnected():
+	api("out", "HUD disconnected from SWP!")
+
+
+func on_error(error_text: String):
+	api("out", to_json(error_text))

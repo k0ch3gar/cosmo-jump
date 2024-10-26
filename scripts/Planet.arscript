@@ -1,0 +1,27 @@
+extends ARImage
+
+var posX:float = 0.0
+var posY:float = 0.0
+
+var radius:float = 0.0
+var mass:float = 0.0
+
+var currentRotation:float = 0.0
+var rotationSpeed:float = 0.0
+
+func setup(x:float,y:float,r:float,m:float,rs:float) -> void:
+	posX = x
+	posY = y
+	radius = r
+	mass = m
+	rotationSpeed = deg2rad(rs)
+	api("out", self.top)
+	self.top = posY
+	api("out", self.top)
+	self.left = posX
+	self.width = 2 * r
+	self.height = self.width
+
+func update_process(delta:float) -> void:
+	currentRotation += rotationSpeed
+	self.set_rotation(currentRotation)

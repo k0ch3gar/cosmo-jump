@@ -1,0 +1,52 @@
+extends ARImage
+
+var baseSize:float =1.0
+var posX: float = 1.0
+var posY: float = 1.0
+
+var accX:float = 0.0
+var accY:float = 0.0
+
+var velX:float = .0
+var velY:float = 0.0
+
+var mass:float = 1.0
+
+func update_process(delta: float) -> void:
+	updatePos(delta)
+
+func setup(x: float, y: float, size: float) -> void:
+	posX = x
+	posY = y
+	baseSize = size
+	
+	var target_size: int = 10 * size
+	self.h_frames = target_size
+	self.height = target_size
+	
+	self.top = 600 - posY - target_size / 2.0
+	self.left = 910 + posY - target_size / 2.0
+
+func updateVelocity() -> void:
+	velX += accX
+	velY += accY
+	
+	accX = 0
+	accY = 0
+
+func applyForce(forceX: float, forceY: float) -> void:
+	accX = forceX / mass
+	accY = forceY / mass
+	
+	updateVelocity()
+
+func rotateSprite(angle_rad:float) -> void:
+	var pivotX:float = self.width / 2
+	var pivotY:float = self.height / 2
+
+func updatePos(delta:float) -> void:
+	posX += velX * delta
+	posY += velY * delta
+	
+	self.left = posX
+	self.top = posY

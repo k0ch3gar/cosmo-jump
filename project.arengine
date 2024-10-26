@@ -1,0 +1,161 @@
+{
+	"appinfo": {
+		"project_name": "kreaton_game_example"
+	},
+	"application": {
+		"class": "ARMain",
+		"properties": [
+			[
+				"name",
+				"Main"
+			],
+			[
+				"ar_script",
+				"scripts/Main.arscript"
+			],
+			[
+				"operation_add",
+				true
+			],
+			[
+				"operation_duplicate",
+				false
+			],
+			[
+				"operation_delete",
+				false
+			],
+			[
+				"operation_set_preset",
+				false
+			],
+			[
+				"operation_drag",
+				false
+			],
+			[
+				"operation_drop",
+				true
+			]
+		],
+		"children": [
+			{
+				"class": "ARImage",
+				"properties": [
+					[
+						"name",
+						"Astronaut"
+					],
+					[
+						"collapsed_in_tree",
+						false
+					],
+					[
+						"collapsed_in_tree_flags",
+						{
+							"is_visible": false
+						}
+					],
+					[
+						"top",
+						7.482596
+					],
+					[
+						"left",
+						-5.611096
+					],
+					[
+						"width",
+						305.073669
+					],
+					[
+						"height",
+						273.313904
+					],
+					[
+						"anchors",
+						16
+					],
+					[
+						"ar_script",
+						"scripts/Astronaut.arscript"
+					],
+					[
+						"image",
+						"images/cosmo.png"
+					]
+				]
+			},
+			{
+				"class": "ARGroup",
+				"properties": [
+					[
+						"name",
+						"pivot"
+					],
+					[
+						"collapsed_in_tree",
+						false
+					],
+					[
+						"collapsed_in_tree_flags",
+						{
+							"is_visible": false
+						}
+					],
+					[
+						"width",
+						128
+					],
+					[
+						"height",
+						128
+					],
+					[
+						"anchors",
+						16
+					]
+				]
+			},
+			{
+				"class": "ARImage",
+				"properties": [
+					[
+						"name",
+						"Planet"
+					],
+					[
+						"collapsed_in_tree",
+						false
+					],
+					[
+						"collapsed_in_tree_flags",
+						{
+							"is_visible": false
+						}
+					],
+					[
+						"width",
+						123.247665
+					],
+					[
+						"height",
+						117.309753
+					],
+					[
+						"anchors",
+						16
+					],
+					[
+						"ar_script",
+						"scripts/Planet.arscript"
+					],
+					[
+						"image",
+						"images/planet9.png"
+					]
+				]
+			}
+		]
+	}
+}

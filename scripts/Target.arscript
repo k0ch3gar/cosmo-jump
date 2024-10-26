@@ -1,0 +1,46 @@
+extends ARFillRect
+
+var base_size: float = 1.0
+
+var pos_x: float = 0.0
+var pos_y: float = 0.0
+var pos_z: float = 0.0
+
+var label
+
+
+func setup(x: float, y: float, z: float, size: float) -> void:
+	pos_x = x
+	pos_y = y
+	pos_z = z
+	base_size = size
+	
+	var target_size: int = 10 * size * atan(size / (2 * pos_z))
+	#api("out", "Target size: " + str(target_size))
+	self.width = target_size
+	self.height = target_size
+	self.border_radius = target_size / 2.0
+	self.border_width = target_size / 8.0
+	
+	self.top = 600 - pos_y - target_size / 2.0
+	self.left = 910 + pos_x - target_size / 2.0
+	#api("out", "Distance: " + str(pos_z) + "X: " + str(pos_x) + "Y: " + str(pos_y))
+	#api("out", str("Pos z: " + str(pos_z)))
+	
+	label.top = -self.width / 2.0 + 10
+	label.text = str(str(pos_z) + " m")
+
+
+func init() -> void:
+	label = get_ar_element("ARLabel")
+
+
+func check_intersection(bullet_x: float, bullet_y: float, bullet_z: float) -> bool:
+	if abs(bullet_z - pos_z) < pos_z * 0.1:
+		if abs(bullet_x - pos_x) < ((base_size / 2.0) + (pos_z * 0.1)) and abs(bullet_y - pos_y) < ((base_size / 2.0) + (pos_z * 0.05)):
+			return true
+		else:
+			return false
+	else: 
+		return false
+
